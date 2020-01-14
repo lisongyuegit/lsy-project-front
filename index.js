@@ -19,35 +19,26 @@ function copyText(){
 	};
 	xhr.send(null);
 	console.log("调用结束 ");
+	submit("11");
 }
 
 //初始化监测类别下拉框的值
-//function submit(defaultValue){
-//alert("触发了点击事件")
-//$.ajax({
-//	    url : rootpath+"/webpage/biz/sf/objectandcategory/list.action?bean.objectid="+objectid,
-//		type:'POST',
-//		cache : false,
-//		data : {},
-//		async : false,
-//		error : function(data) {
-//			alertErrorMsg("系统ajax交互错误");
-//		},
-//		success : function(data) {
-//		//先初始为空值
-//        $("#categoryid").empty();
-//			var datastr = JSON.parse(data);
-//			var dataList = datastr.rows;
-//			for(var i = 0; i < dataList.length; i++){
-//				if(i == 0){
-//					$("#categoryid").append("<option value=''>请选择</option>");
-//				}
-//				if(defaultValue == dataList[i].categoryid){
-//					$("#categoryid").append("<option value='"+dataList[i].categoryid+"' selected='selected'>"+dataList[i].categoryname+"</option>");//新增
-//				}else{
-//					$("#categoryid").append("<option value='"+dataList[i].categoryid+"'>"+dataList[i].categoryname+"</option>");//新增
-//				}
-//			}
-//		}
-//	});
-//}
+function submit(defaultValue){
+console.log("进入ajax");
+$.ajax({
+	    url : 'http://localhost:8081/lsy/testQuery',
+		type:'GET',
+		cache : false,
+		data : {},
+		async : false,
+		error : function(data) {
+			alertErrorMsg("系统ajax交互错误");
+		},
+		success : function(data) {
+		//先初始为空值
+			var datastr = JSON.parse(data);
+			console.log("ajax调用结果为: " + datastr)
+			var dataList = datastr.rows;
+		}
+	});
+}
